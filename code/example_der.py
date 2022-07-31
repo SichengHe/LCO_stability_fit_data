@@ -167,7 +167,7 @@ for i in range(nx):
     stability_measure_der_FD[i] = (stability_measure_per - stability_measure_0) / epsilon
 
 # FD actual
-epsilon_actual = 1e-6
+epsilon_actual = 2e-7
 mag_actual_list = [mag_0 - epsilon_actual, mag_0, mag_0 + epsilon_actual]
 mu_actual_list = []
 for i in range(3):

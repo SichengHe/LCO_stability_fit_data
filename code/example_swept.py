@@ -8,7 +8,7 @@ import pk_util as pk
 import example_simple_setting as dyn_setting
 from plot_packages import *
 
-fontsize=30
+fontsize = 30
 
 # optimization path
 filename = "opt_hist.dat"
@@ -116,7 +116,9 @@ X1_arr, X2_arr = np.meshgrid(x1_arr, x2_arr)
 
 levels0 = np.arange(-1.0, 1.0, 0.1)
 
-CP0 = ax[0].contour(X1_arr, X2_arr, stabilty_measure_arr.T, levels0, extend="both", cmap="coolwarm", linewidths=2, zorder=0)
+CP0 = ax[0].contour(
+    X1_arr, X2_arr, stabilty_measure_arr.T, levels0, extend="both", cmap="coolwarm", linewidths=2, zorder=0
+)
 
 ax[0].clabel(CP0, levels0[1::1], inline=True, fmt="%1.1f", fontsize=fontsize, zorder=0)  # label every second level
 
@@ -126,8 +128,8 @@ ax[0].spines["top"].set_visible(False)
 ax[0].set_xlabel(r"$x_1$", fontsize=fontsize)
 ax[0].set_ylabel(r"$x_2$", fontsize=fontsize, rotation=0)
 
-ax[0].tick_params(axis='x', labelsize=fontsize)
-ax[0].tick_params(axis='y', labelsize=fontsize)
+ax[0].tick_params(axis="x", labelsize=fontsize)
+ax[0].tick_params(axis="y", labelsize=fontsize)
 
 ax[0].yaxis.set_label_coords(-0.2, 0.5)
 
@@ -147,8 +149,8 @@ stability_boundary = np.concatenate((stability_boundary_1, stability_boundary_2)
 # Optimal solution
 # ax[0].plot(x_opt[0], x_opt[1], "o")
 # Path
-ax[0].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=10, zorder=3)
-ax[0].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=6, zorder=3)
+ax[0].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=15, zorder=3)
+ax[0].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=9, zorder=3)
 # Add arrow to the path
 ax[0].quiver(
     x_path[:-1, 0],
@@ -164,7 +166,7 @@ ax[0].quiver(
 
 # Stability boundary
 ax[0].plot(stability_boundary[:, 0], stability_boundary[:, 1], "-", color="k", alpha=0.6, zorder=0)
-ax[0].fill_between(stability_boundary[:, 0], stability_boundary[:, 1], y2=0, color=my_purple, alpha=0.3, zorder=0)
+ax[0].fill_between(stability_boundary[:, 0], stability_boundary[:, 1], y2=1.0, color=my_purple, alpha=0.3, zorder=0)
 
 # ====================
 # Second plot: obj
@@ -173,7 +175,7 @@ if is_compare_FD:
 
     CP1 = ax[1].contour(X1_arr, X2_arr, stabilty_measure_FD_arr.T, levels0, extend="both", linewidths=2, zorder=0)
 
-    ax[1].clabel(CP1, levels0[1::1], inline=True, fmt="%1.1f", fontsize=fontsize,zorder=0)  # label every second level
+    ax[1].clabel(CP1, levels0[1::1], inline=True, fmt="%1.1f", fontsize=fontsize, zorder=0)  # label every second level
 
 else:
     levels1 = np.arange(-1.0, 1.0, 0.1)
@@ -188,8 +190,8 @@ ax[1].spines["top"].set_visible(False)
 ax[1].set_xlabel(r"$x_1$", fontsize=fontsize)
 ax[1].set_ylabel(r"$x_2$", fontsize=fontsize, rotation=0)
 
-ax[1].tick_params(axis='x', labelsize=fontsize)
-ax[1].tick_params(axis='y', labelsize=fontsize)
+ax[1].tick_params(axis="x", labelsize=fontsize)
+ax[1].tick_params(axis="y", labelsize=fontsize)
 
 ax[1].get_yaxis().set_visible(False)
 
@@ -197,8 +199,8 @@ ax[1].get_yaxis().set_visible(False)
 # Optimal solution
 # ax[1].plot(x_opt[0], x_opt[1], "o")
 # Path
-ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=10, zorder=3)
-ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=6, zorder=3)
+ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=15, zorder=3)
+ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=9, zorder=3)
 # Add arrow to the path
 ax[1].quiver(
     x_path[:-1, 0],
@@ -213,26 +215,26 @@ ax[1].quiver(
 )
 # Stability boundary
 ax[1].plot(stability_boundary[:, 0], stability_boundary[:, 1], "-", color="k", alpha=0.6, zorder=0)
-ax[1].fill_between(stability_boundary[:, 0], stability_boundary[:, 1], y2=0, color=my_purple, alpha=0.3, zorder=0)
+ax[1].fill_between(stability_boundary[:, 0], stability_boundary[:, 1], y2=1.0, color=my_purple, alpha=0.3, zorder=0)
 
 ax[1].set_xlim(0, 1.05)
 ax[1].set_ylim(0, 1.05)
 
-ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=10, zorder=3)
-ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=6, zorder=3)
+ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color="w", markersize=15, zorder=3)
+ax[1].plot(x_path[:, 0], x_path[:, 1], "o", color=my_brown, markersize=9, zorder=3)
 
-ax[0].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s",color="w",  markersize=10, zorder=3)
-ax[0].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s",color=my_brown, markersize=6, zorder=3)
+ax[0].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s", color="w", markersize=15, zorder=3)
+ax[0].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s", color=my_brown, markersize=9, zorder=3)
 
-ax[0].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d",color="w",  markersize=15, zorder=3)
-ax[0].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d",color=my_brown, markersize=8, zorder=3)
+ax[0].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d", color="w", markersize=23, zorder=3)
+ax[0].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d", color=my_brown, markersize=12, zorder=3)
 
-ax[1].plot([x_path[0, 0], x_path[0, 0]], [x_path[-1, 1], x_path[-1, 1]], "s",color="w",  markersize=10, zorder=3)
-ax[1].plot([x_path[0, 0], x_path[0, 0]], [x_path[-1, 1], x_path[-1, 1]], "s",color=my_brown, markersize=6, zorder=3)
+ax[1].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s", color="w", markersize=15, zorder=3)
+ax[1].plot([x_path[0, 0], x_path[0, 0]], [x_path[0, 1], x_path[0, 1]], "s", color=my_brown, markersize=9, zorder=3)
 
-ax[1].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d",color="w",  markersize=15, zorder=3)
-ax[1].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d",color=my_brown, markersize=8, zorder=3)
+ax[1].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d", color="w", markersize=23, zorder=3)
+ax[1].plot([x_path[-1, 0], x_path[-1, 0]], [x_path[-1, 1], x_path[-1, 1]], "d", color=my_brown, markersize=12, zorder=3)
 
 
 plt.tight_layout()
-plt.savefig("../doc/figures/example_swept.pdf", bbox_inches="tight")
+plt.savefig("../R1_journal/figures/example_swept.pdf", bbox_inches="tight")

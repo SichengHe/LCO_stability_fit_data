@@ -21,7 +21,7 @@ matplotlib.rcParams.update({"font.size": 20})
 rc("font", **{"family": "sans-serif", "sans-serif": ["Helvetica"]})
 rc("text", usetex=True)
 
-isSubcritical = False
+isSubcritical = True
 
 
 def force(mu, w, x):
@@ -448,6 +448,7 @@ ax.yaxis.set_label_coords(-0.15, 0.4)
 
 # ax.set_xlim(0.1, 1.1)
 ax.set_ylim(0, 15.0)
+ax.set_xlim(0.825, 0.86)
 
 # ax.text(0.18, 1.05, r"Fitted", fontsize=12, color=my_blue)
 # ax.text(0.18, 0.90, r"Actual", fontsize=12, color=my_red, alpha = 0.5)
@@ -458,8 +459,8 @@ ax.plot(mu_bif_arr_fitted, angle_bif_arr_fitted, "-", color=my_blue)
 ax.plot(mu_arr, angle_arr, "-x", color=my_red, alpha=0.5)
 
 if isSubcritical:
-    plt.savefig("../doc/figures/example_fit_ae_sub.pdf", bbox_inches="tight")
+    plt.savefig("../R1_journal/figures/example_fit_ae_sub.pdf", bbox_inches="tight")
 else:
-    plt.savefig("../doc/figures/example_fit_ae_sup.pdf", bbox_inches="tight")
+    plt.savefig("../R1_journal/figures/example_fit_ae_sup.pdf", bbox_inches="tight")
 
 plt.show()
